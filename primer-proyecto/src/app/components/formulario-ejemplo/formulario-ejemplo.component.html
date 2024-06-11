@@ -1,0 +1,14 @@
+
+<div class="container">
+    <form [formGroup]="form">
+        <label>Nombre</label>
+        <input type="text" class="form-control" formControlName="nombre"/>
+
+        <label>Apellido</label>
+        <input type="text" class="form-control" formControlName="apellido"/>
+
+        <button (click)="submit()">Submit</button>
+
+        <button type="button" (click)="cambiarNombre()">Cambiar nombre</button>
+    </form>
+</div>
