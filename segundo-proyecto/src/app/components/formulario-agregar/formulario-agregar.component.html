@@ -1,0 +1,59 @@
+<h3 class="alert alert-info">Formulario Agregar</h3>
+
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+
+  <div class="form-group">
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" class="form-control" [formControlName]="campos.nombre">
+    <div class="text-danger text-end" *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched">
+      <div *ngIf="form.get('nombre')?.hasError('required')">
+        El campo nombre es obligatorio
+      </div>
+      <div *ngIf="form.get('nombre')?.hasError('minlength')">
+        El campo nombre es muy corto
+      </div>
+      <div *ngIf="form.get('nombre')?.hasError('maxlength')">
+        El campo nombre es muy largo
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="documento">Documento</label>
+    <input type="number" id="documento" class="form-control" [formControlName]="campos.documento">
+  </div>
+
+  <div class="form-group">
+    <label for="documento">Fecha de nacimiento</label>
+    <input type="date" id="fechaNacimiento" class="form-control" [formControlName]="campos.fechaNacimiento">
+  </div>
+
+  <div class="form-group">
+    <label for="genero">Genero</label>
+    <select id="genero" class="form-select" [formControlName]="campos.genero">
+      <option value="Masculino">Masculino</option>
+      <option value="Femenino">Femenino</option>
+      <option value="NoBinario">NoBinario</option>
+      <option value="Otro">Otro</option>
+      <option value="PrefieroNoDecirlo">PrefieroNoDecirlo</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary mt-2">Agregar contacto</button>
+</form>
+
+<div class="alert alert-success">
+  <b>Debug</b>
+  <hr/>
+  {{ form.value | json }}
+  <hr/>
+  {{ form.get("nombre")?.errors | json }}
+  <hr/>
+  <div>
+    <button (click)="cambiarDatos()">
+      Cambiar Datos
+    </button>
+  </div>
+</div>
+
+<a class="btn btn-primary me-2 mt-2" routerLink="">Volver al listado con RouterLink</a>

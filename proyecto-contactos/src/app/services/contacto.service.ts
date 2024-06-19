@@ -57,5 +57,25 @@ export class ContactoService {
     return of(this.contactos);
   }
 
-  
+  //obtenerContacto(id: number): Observable<ContactoModel> {
+    //return of(this.contactos.find(contacto => contacto.id === id));
+  //}
+
+  guardarContacto(contacto: ContactoModel): Observable<ContactoModel> {
+    contacto.id = this.contactos.length + 1;
+    this.contactos.push(contacto);
+    return of(contacto);
+  }
+
+  actualizarContacto(id: number, contacto: ContactoModel): Observable<ContactoModel> {
+    const index = this.contactos.findIndex(c => c.id === id);
+    this.contactos[index] = contacto;
+    return of(contacto);
+  }
+
+  eliminarContacto(id: number): Observable<ContactoModel> {
+    const index = this.contactos.findIndex(c => c.id === id);
+    this.contactos.splice(index, 1);
+    return of(this.contactos[index]);
+  }
 }
