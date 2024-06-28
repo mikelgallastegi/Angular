@@ -8,7 +8,7 @@ import { ContactoServiceInterface } from './contacto.service.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class ContactoService implements ContactoServiceInterface {
+export class ContactoService extends ContactoServiceInterface {
 
   private contactos : ContactoModel[] = [
     { id: 1, documento: 123456789, nombre: 'Juan', fechaNacimiento: new Date(), genero: GeneroModel.Masculino },
@@ -16,20 +16,22 @@ export class ContactoService implements ContactoServiceInterface {
     { id: 3, documento: 345678901, nombre: 'Maria', fechaNacimiento: new Date(), genero: GeneroModel.Femenino },
   ]
 
-  constructor() { }
+  constructor() {
+    super();
+   }
 
   //Metodo que simula la consulta a un servicio REST
-  getContactos() : Observable<ContactoModel[]> {
+  override getContactos() : Observable<ContactoModel[]> {
     return of(this.contactos);
   }
 
-  agregar(nuevo : ContactoModel) : Observable<any> {
+  override agregar(nuevo : ContactoModel) : Observable<any> {
     nuevo.id = Math.max(...this.contactos.map(c => c.id)) + 1;
     this.contactos.push(nuevo);
     return of("OK");
   }
 
-  eliminar(id : number) : Observable<any> {
+  override eliminar(id : number) : Observable<any> {
     const index = this.contactos.findIndex(c => c.id === id);
     if (index > -1) {
       this.contactos.splice(index, 1);

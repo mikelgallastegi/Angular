@@ -1,0 +1,32 @@
+{
+  "contactos": [
+    {
+      "id": "1",
+      "documento": 12345678,
+      "nombre": "Juan Pérez",
+      "fechaNacimiento": "1985-10-15T00:00:00.000Z",
+      "genero": "Masculino"
+    },
+    {
+      "id": "2",
+      "documento": 23456789,
+      "nombre": "María García",
+      "fechaNacimiento": "1990-05-25T00:00:00.000Z",
+      "genero": "Femenino"
+    },
+    {
+      "id": "3",
+      "documento": 34567890,
+      "nombre": "Alex Fernández",
+      "fechaNacimiento": "2000-12-01T00:00:00.000Z",
+      "genero": "No Binario"
+    },
+    {
+      "id": "3aee",
+      "documento": 77777,
+      "nombre": "Mikel",
+      "fechaNacimiento": "2024-06-07",
+      "genero": "Otro"
+    }
+  ]
+}

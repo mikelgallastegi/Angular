@@ -6,6 +6,7 @@ import { PropNames, objectProps } from '../../utils/strong-type-props';
 import { ContactoModel } from '../../models/contacto.model';
 import Swal from 'sweetalert2';
 import { ContactoService } from '../../services/contacto.service';
+import { ContactoServiceInterface } from '../../services/contacto.service.interface';
 
 @Component({
   selector: 'app-formulario-agregar',
@@ -18,7 +19,7 @@ export class FormularioAgregarComponent {
   form : FormGroup;
   campos : PropNames<ContactoModel>;
 
-  constructor(private formBuilder : FormBuilder, private service : ContactoService, private router : Router){
+  constructor(private formBuilder : FormBuilder, private service : ContactoServiceInterface, private router : Router){
     this.form = this.formBuilder.group({
       documento: ['', [Validators.required, Validators.minLength(1000000), Validators.maxLength(99999999)]],
       nombre: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],

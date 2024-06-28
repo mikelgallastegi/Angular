@@ -17,8 +17,12 @@
                 <td>{{ contacto.fechaNacimiento | date: 'yyyy-MM-dd' }}</td>
                 <td>{{ contacto.genero }}</td>
                 <td class="text-end">
-                    <a [routerLink]="'editar/' + contacto.id " class="btn btn-primary me-2">Editar</a>
-                    <button class="btn btn-danger" >Eliminar</button>
+                    <a [routerLink]="'editar/' + contacto.id " class="btn btn-primary me-2">
+                        Editar
+                    </a>
+                    <button class="btn btn-danger" (click)="eliminar(contacto.id)">
+                        Eliminar
+                    </button>
                 </td>
             </tr>
         </tbody>
